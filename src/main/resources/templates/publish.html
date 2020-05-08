@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>publish talk to me</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-3.3.1.min.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="/css/community.css">
+
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<!--pubulisher-->
+<div class="container-fluid main ">
+    <div class="row" style="background-color: white">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <form action="/publish" method="post">
+                <input type="hidden" name = "id" th:value="${id}">
+                <div class="form-group">
+                    <label for="title">标题[简明扼要]</label>
+                    <input th:value="${title}" type="text" name="title" class="form-control" id="title" placeholder="标题 ...">
+                </div>
+
+                <div class="form-group">
+                    <label for="Title">问题补充(必填参照右侧提示)</label>
+                    <textarea th:text="${description}" class="form-control" id="description" name="description" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Title">添加标签：</label>
+                    <input type="text" th:value="${tag}" class="form-control" name="tag" id="tag" placeholder="问题标签[，]隔开">
+                </div>
+
+                <div class="container-fluid" style="margin: 30px">
+                    <div class="row">
+                        <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12"  th:hidden="${error}==null?true:false" th:text="${error}">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="float: right;margin-bottom: 15px">
+                            <button type="submit" class="btn btn-success ">发布
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="background-color: white">
+            <h3>问题发起指南</h3>
+
+            - 问题标题：不超过25字
+            - 标签描述：逗号隔开，每个不超过十个字
+
+            -问题补充：详细说明内容，问题直观清晰有条理，，提供相关资料：<br>
+            开发环境；<br>
+            详细版本；<br>
+            问题的上下文的配置信息；<br>
+            完整描述程序的流程，错误的关键异常信息；<br>
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
